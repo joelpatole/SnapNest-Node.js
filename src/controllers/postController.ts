@@ -11,6 +11,7 @@ class PostController {
     }
   }
 
+  //
   public async getPosts(req: Request, res: Response): Promise<any> {
     const count = parseInt(req.params.count) || 5; // Default to 5 if not provided
     const page = parseInt(req.query.page as string) || 1; // Default to page 1 if not provided

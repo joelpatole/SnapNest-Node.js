@@ -24,7 +24,7 @@ const app = express();
 app.use(cors());
 
 
-
+//
 //app.use(bodyParser.json()); and app.use(express.json()); 
 // essentially do the same thing: they parse incoming requests with JSON payloads.
 app.use(bodyParser.json()); //way 1
