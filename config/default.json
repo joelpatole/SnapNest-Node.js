@@ -1,0 +1,5 @@
+{
+    "port": 3000,
+    "mongoURI": "mongodb+srv://joelpatole4:Joelpatole12345@cluster0.ce3cmnb.mongodb.net/social_media",
+    "jwtSecret": "your_jwt_secret_key"
+  }
