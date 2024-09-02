@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import PostService from '../services/postService';
 
 class PostController {
+
+  //
   public async createBulkPosts(req: Request, res: Response): Promise<void> {
     try {
       const posts = await PostService.bulkPost(req.body);
