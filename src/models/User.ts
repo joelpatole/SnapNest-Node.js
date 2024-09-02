@@ -6,16 +6,20 @@ export interface IUser extends Document {
     email: string;
     password: string;
     name: string;
-    mobile : string,
-    profilePicture? : string
-  }
+    mobile: string;
+    profilePicture?: string;
+    followings: Schema.Types.ObjectId[];
+    followers: Schema.Types.ObjectId[];
+}
 
 const UserSchema = new Schema<IUser>({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    mobile : {type : String, required : true},
-    profilePicture : {type : String, required : false}
+    mobile: { type: String, required: true },
+    profilePicture: { type: String, required: false },
+    followings: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    followers: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 // UserSchema.pre<IUser>('save', async function (next) {

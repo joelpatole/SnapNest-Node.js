@@ -1,5 +1,4 @@
-import mongoose, { Document, model, ObjectId } from 'mongoose';
-const { Schema } = mongoose;
+import mongoose, { Document, model, ObjectId, Schema } from "mongoose";
 
 export interface IComment {
   userId: ObjectId;
@@ -17,13 +16,15 @@ export interface IPost extends Document {
   likesCount: number;
   sharesCount: number;
   comments: IComment[];
+  likes: Schema.Types.ObjectId[];
+  shares: Schema.Types.ObjectId[];
 }
 
 //Comment schema
 const commentSchema = new Schema<IComment>({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
   username: {
@@ -37,14 +38,14 @@ const commentSchema = new Schema<IComment>({
   date: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 //Post schema
 const postSchema = new Schema({
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   imageUrl: {
     type: String,
@@ -52,7 +53,7 @@ const postSchema = new Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
   description: {
@@ -61,7 +62,7 @@ const postSchema = new Schema({
   },
   genreId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Gener', 
+    ref: "Gener",
     required: true,
   },
   likesCount: {
@@ -72,8 +73,10 @@ const postSchema = new Schema({
     type: Number,
     default: 0,
   },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  shares: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
 // Create the Post model
-export default model<IPost>('Post', postSchema);
+export default model<IPost>("Post", postSchema);
