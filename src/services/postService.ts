@@ -19,6 +19,7 @@ class PostService {
       const posts = await Post.find()
         .populate("userId", "name profilePicture") // Include username and profileImage from User
         .populate("genreId", "displayName") // Include displayName from Genre
+        .sort({ date: -1 })
         .skip((page - 1) * count)
         .limit(count)
         .exec();
