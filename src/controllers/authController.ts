@@ -7,6 +7,7 @@ import config from 'config';
 import RefreshToken from '../models/RefreshToken';
 import bcrypt from 'bcryptjs';
 
+//
 export const signup = async (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
