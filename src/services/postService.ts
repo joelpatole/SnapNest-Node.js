@@ -41,7 +41,7 @@ class PostService {
 
   public async getUserPosts(userId: mongoose.Schema.Types.ObjectId) {
     try {
-      const posts = await Post.find({ userId: userId });
+      const posts = await Post.find({ userId: userId }).sort({ date: -1 });
       return posts;
     } catch (error) {
       throw new CustomError("Error", 409, [{ param: "id", msg: `${error}` }]);
