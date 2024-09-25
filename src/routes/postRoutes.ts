@@ -5,7 +5,7 @@ import authMiddleware from "../middlewares/authMiddleware";
 const router = Router();
 
 router.post("/bulk-posts", PostController.createBulkPosts);
-router.get("/posts/:count", PostController.getPosts);
+router.get("/posts/:page/:count", PostController.getPosts);
 router.post("/new-post", PostController.newPost);
 
 export default router;

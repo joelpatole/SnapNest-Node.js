@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IUser extends Document {
+    _id: mongoose.Types.ObjectId;
     isModified(arg0: string): unknown;
     email: string;
     password: string;

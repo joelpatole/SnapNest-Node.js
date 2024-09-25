@@ -8,6 +8,7 @@ export interface IComment {
 }
 
 export interface IPost extends Document {
+  _id: mongoose.Types.ObjectId;
   date?: Date;
   imageUrl: string;
   userId: ObjectId;
